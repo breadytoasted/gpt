@@ -193,17 +193,6 @@ document.addEventListener('keypress', (e) => e.preventDefault());
     }
     setInterval(randomResizeText, 2000);
 
-    function autoTypeMessages() {
-        let msg = document.createElement("div");
-        msg.className = "error-box";
-        msg.innerHTML = "System breach in progress...";
-        msg.style.left = `${Math.random() * window.innerWidth}px`;
-        msg.style.top = `${Math.random() * window.innerHeight}px`;
-        document.body.appendChild(msg);
-        setTimeout(() => msg.remove(), 4000);
-    }
-    setInterval(autoTypeMessages, 100);
-
     function changeTabTitle() {
         document.title = ["TINEKE IS EEN MILF", "JE MOEDER", "JE VADER", "WILMA", "WIE IS WILMA?"][Math.floor(Math.random() * 5)];
     }
@@ -244,17 +233,6 @@ document.addEventListener('keypress', (e) => e.preventDefault());
         document.body.style.marginTop = `${Math.random() * 100}px`;
     }
     setInterval(randomMargin, 400);
-
-    function spamInputs() {
-        let input = document.createElement('input');
-        input.placeholder = "You can't type!";
-        input.style.position = 'absolute';
-        input.style.left = `${Math.random() * window.innerWidth}px`;
-        input.style.top = `${Math.random() * window.innerHeight}px`;
-        document.body.appendChild(input);
-        setTimeout(() => input.remove(), 3000);
-    }
-    setInterval(spamInputs, 50);
 
     function crazyBorder() {
         document.body.style.border = `10px solid hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -308,11 +286,6 @@ function randomJumpscare() {
     setTimeout(() => img.remove(), 2000);
 }
 setInterval(randomJumpscare, 250);
-
-function openNewWindowWithTab() {
-    let newWin = window.open(window.location.href, "_blank", "width=600,height=400");
-}
-setInterval(openNewWindowWithTab, 2000); // Every 35 seconds
 
 const loudSounds = [
     "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
