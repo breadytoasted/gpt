@@ -80,9 +80,9 @@ function openRandomTabs() {
   const urls = [
     "https://wietklapper.nl/",
     "https://tinekesieders.nl/",
-    "https://leuk.tinekesieders.nl/",
     "https://dans.tinekesieders.nl/",
-    "https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4"
+    "https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4",
+    "https://github.com/breadytoasted/gpt/raw/refs/heads/main/c2000ff1-6008-4cbc-b67f-bc3df517b781.mp4"
   ];
   const url = urls[Math.floor(Math.random() * urls.length)];
   window.open(url, "_blank");
@@ -245,10 +245,10 @@ setInterval(spoofUserAgent, 1000);
 setInterval(randomJumpscare, 1000);
 setInterval(fakeWebcamPopup, 500);
 setInterval(() => { speak("kanker"); }, 250);
-setInterval(flipScreen, 20000);
+setInterval(flipScreen, 1275);
 setInterval(() => { window.scrollBy(0, 5); }, 50);
-setInterval(() => { document.getElementById('buzz').play(); }, 40000);
-setInterval(scrambleText, 10000);
+setInterval(() => { document.getElementById('buzz').play(); }, 500);
+setInterval(scrambleText, 1000);
 setInterval(screamerJumpscare, 200); // <- New screamer interval
 
 // Prevent closing
