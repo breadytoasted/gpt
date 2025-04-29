@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Not A Virus</title>
   <style>
     body {
@@ -14,36 +14,36 @@
   </style>
 </head>
 <body>
-  <h1>Totally Not a Virus Trust Me Bro</h1>
+  <h1>hi :-)</h1>
 
   <audio id="error" src="https://www.soundjay.com/button/beep-10.wav" preload="auto"></audio>
 
 <script>
-
 // === FUNCTIONS ===
 
 function getBlockedKeysByOS(os) {
-    let osSpecificKeys = [];
+  let osSpecificKeys = [];
 
-switch (os) {
-        case 'Windows':
-            osSpecificKeys = ['F12', 'F11', 'Alt+Tab', 'Ctrl+Shift+Esc']; // Prevent common shortcuts
-            break;
-        case 'macOS':
-            osSpecificKeys = ['Command', 'Option', 'F4', 'F11']; // macOS keys to block
-            break;
-        case 'Linux':
-            osSpecificKeys = ['Ctrl+Alt+T', 'Alt+Tab', 'Super', 'F5']; // Linux-specific keys
-            break;
-        case 'Chromebook':
-            osSpecificKeys = ['Ctrl+Shift+R', 'Ctrl+Alt+T', 'Ctrl+Alt+W']; // Chromebook-specific keys
-            break;
-        default:
-            osSpecificKeys = [];
-            break;
-    }
+  switch (os) {
+    case 'Windows':
+      osSpecificKeys = ['F12', 'F11', 'Alt+Tab', 'Ctrl+Shift+Esc'];
+      break;
+    case 'macOS':
+      osSpecificKeys = ['Command', 'Option', 'F4', 'F11'];
+      break;
+    case 'Linux':
+      osSpecificKeys = ['Ctrl+Alt+T', 'Alt+Tab', 'Super', 'F5'];
+      break;
+    case 'Chromebook':
+      osSpecificKeys = ['Ctrl+Shift+R', 'Ctrl+Alt+T', 'Ctrl+Alt+W'];
+      break;
+    default:
+      osSpecificKeys = [];
+      break;
+  }
 
-    return osSpecificKeys;
+  return osSpecificKeys;
+}
 
 // Glitch text
 function glitchText() {
@@ -75,7 +75,7 @@ function playErrorSound() {
   error.play();
 }
 
-// Open random tabs
+// Open random tabs (will be popup blocked unless user interacted)
 function openRandomTabs() {
   const urls = [
     "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -87,7 +87,7 @@ function openRandomTabs() {
   window.open(url, "_blank");
 }
 
-// Auto download (simulate)
+// Simulated download
 function autoDownloadVirus() {
   const link = document.createElement('a');
   link.href = 'data:text/plain,You got owned!';
@@ -97,17 +97,19 @@ function autoDownloadVirus() {
   link.remove();
 }
 
-// Steal focus (annoy user)
+// Steal focus
 function stealFocus() {
   window.focus();
 }
 
-// Window resize chaos
+// Resize window (likely blocked)
 function windowResize() {
-  window.resizeBy(Math.random() * 100 - 50, Math.random() * 100 - 50);
+  try {
+    window.resizeBy(Math.random() * 100 - 50, Math.random() * 100 - 50);
+  } catch (e) {}
 }
 
-// Spoof user-agent
+// Fake user-agent (read-only, doesn't affect servers)
 function spoofUserAgent() {
   const userAgents = [
     'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
@@ -115,24 +117,20 @@ function spoofUserAgent() {
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
     'FakeBrowser/123.45'
   ];
-  Object.defineProperty(navigator, 'userAgent', {
-    get: function() {
-      return userAgents[Math.floor(Math.random() * userAgents.length)];
-    }
-  });
+  // NOTE: Won't actually spoof in modern browsers
 }
 
-// Jumpscare images
+// Jumpscare
 function randomJumpscare() {
-    const jumpscareImages = [
+  const jumpscareImages = [
     "https://www.icegif.com/wp-content/uploads/2023/02/icegif-1692.gif", 
     "https://i.pinimg.com/originals/c0/7f/97/c07f97f3234f1820d0388f1a62377a9a.gif",
     "https://www.icegif.com/wp-content/uploads/2023/02/icegif-1681.gif",
     "https://www.icegif.com/wp-content/uploads/2023/02/icegif-1686.gif",
     "https://media.tenor.com/-yL9BAwZDOcAAAAM/rat-michael-jackson.gif"
-];
+  ];
   const img = document.createElement('img');
-  img.src = jumpscares[Math.floor(Math.random() * jumpscares.length)];
+  img.src = jumpscareImages[Math.floor(Math.random() * jumpscareImages.length)];
   img.style.position = 'fixed';
   img.style.left = 0;
   img.style.top = 0;
@@ -148,19 +146,18 @@ function randomJumpscare() {
 setInterval(glitchText, 500);
 setInterval(flashBackground, 300);
 setInterval(spawnError, 700);
-setInterval(playErrorSound, 500);
-setInterval(openRandomTabs, 1000);
-setInterval(autoDownloadVirus, 250);
-setInterval(stealFocus, 1500);
-setInterval(windowResize, 750);
-setInterval(spoofUserAgent, 1000);
-setInterval(randomJumpscare, 1000);
+setInterval(playErrorSound, 1500);
+setInterval(openRandomTabs, 15000);       // was too fast
+setInterval(autoDownloadVirus, 10000);    // was way too fast
+setInterval(stealFocus, 2000);
+setInterval(windowResize, 1000);
+setInterval(spoofUserAgent, 5000);
+setInterval(randomJumpscare, 10000);
 
-// Prevent closing
+// Block tab close
 window.onbeforeunload = function() {
   return "Are you sure you want to leave? System may become unstable!";
 };
-
 </script>
 </body>
 </html>
