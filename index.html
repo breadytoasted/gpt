@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Not A Virus</title>
   <style>
     body {
@@ -14,35 +14,35 @@
   </style>
 </head>
 <body>
-  <h1>hi :-)</h1>
+  <h1>Totally Not a Virus Trust Me Bro</h1>
 
   <audio id="error" src="https://www.soundjay.com/button/beep-10.wav" preload="auto"></audio>
+  <audio id="buzz" src="https://assets.mixkit.co/sfx/preview/mixkit-vibrating-phone-alert-988.mp3" preload="auto"></audio>
 
 <script>
+
 // === FUNCTIONS ===
 
 function getBlockedKeysByOS(os) {
-  let osSpecificKeys = [];
-
-  switch (os) {
-    case 'Windows':
-      osSpecificKeys = ['F12', 'F11', 'Alt+Tab', 'Ctrl+Shift+Esc'];
-      break;
-    case 'macOS':
-      osSpecificKeys = ['Command', 'Option', 'F4', 'F11'];
-      break;
-    case 'Linux':
-      osSpecificKeys = ['Ctrl+Alt+T', 'Alt+Tab', 'Super', 'F5'];
-      break;
-    case 'Chromebook':
-      osSpecificKeys = ['Ctrl+Shift+R', 'Ctrl+Alt+T', 'Ctrl+Alt+W'];
-      break;
-    default:
-      osSpecificKeys = [];
-      break;
-  }
-
-  return osSpecificKeys;
+    let osSpecificKeys = [];
+    switch (os) {
+        case 'Windows':
+            osSpecificKeys = ['F12', 'F11', 'Alt+Tab', 'Ctrl+Shift+Esc'];
+            break;
+        case 'macOS':
+            osSpecificKeys = ['Command', 'Option', 'F4', 'F11'];
+            break;
+        case 'Linux':
+            osSpecificKeys = ['Ctrl+Alt+T', 'Alt+Tab', 'Super', 'F5'];
+            break;
+        case 'Chromebook':
+            osSpecificKeys = ['Ctrl+Shift+R', 'Ctrl+Alt+T', 'Ctrl+Alt+W'];
+            break;
+        default:
+            osSpecificKeys = [];
+            break;
+    }
+    return osSpecificKeys;
 }
 
 // Glitch text
@@ -75,7 +75,7 @@ function playErrorSound() {
   error.play();
 }
 
-// Open random tabs (will be popup blocked unless user interacted)
+// Open random tabs
 function openRandomTabs() {
   const urls = [
     "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -87,7 +87,7 @@ function openRandomTabs() {
   window.open(url, "_blank");
 }
 
-// Simulated download
+// Auto download (simulate)
 function autoDownloadVirus() {
   const link = document.createElement('a');
   link.href = 'data:text/plain,You got owned!';
@@ -102,14 +102,12 @@ function stealFocus() {
   window.focus();
 }
 
-// Resize window (likely blocked)
+// Window resize chaos
 function windowResize() {
-  try {
-    window.resizeBy(Math.random() * 100 - 50, Math.random() * 100 - 50);
-  } catch (e) {}
+  window.resizeBy(Math.random() * 100 - 50, Math.random() * 100 - 50);
 }
 
-// Fake user-agent (read-only, doesn't affect servers)
+// Spoof user-agent
 function spoofUserAgent() {
   const userAgents = [
     'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
@@ -117,10 +115,14 @@ function spoofUserAgent() {
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
     'FakeBrowser/123.45'
   ];
-  // NOTE: Won't actually spoof in modern browsers
+  Object.defineProperty(navigator, 'userAgent', {
+    get: function() {
+      return userAgents[Math.floor(Math.random() * userAgents.length)];
+    }
+  });
 }
 
-// Jumpscare
+// Jumpscare images
 function randomJumpscare() {
   const jumpscareImages = [
     "https://www.icegif.com/wp-content/uploads/2023/02/icegif-1692.gif", 
@@ -141,23 +143,85 @@ function randomJumpscare() {
   setTimeout(() => img.remove(), 2000);
 }
 
-// === INTERVALS ===
+// Fake webcam popup
+function fakeWebcamPopup() {
+  alert("Your webcam has been activated.\nStreaming to: 198.51.100.66");
+}
 
+// Text-to-speech
+function speak(message) {
+  const utter = new SpeechSynthesisUtterance(message);
+  utter.pitch = 1.5;
+  utter.rate = 0.8;
+  speechSynthesis.speak(utter);
+}
+
+// Flip screen
+function flipScreen() {
+  document.body.style.transform = "rotate(180deg)";
+  setTimeout(() => {
+    document.body.style.transform = "rotate(0deg)";
+  }, 1500);
+}
+
+// Text scrambling
+function scrambleText() {
+  const elements = document.querySelectorAll("h1, div, p, span");
+  elements.forEach(el => {
+    el.textContent = el.textContent
+      .split('')
+      .map(char => (Math.random() < 0.1 ? String.fromCharCode(33 + Math.random() * 94) : char))
+      .join('');
+  });
+}
+
+// === MOUSE TRAIL AND CURSOR HIDE ===
+document.addEventListener('mousemove', (e) => {
+  document.body.style.cursor = 'none';
+  const trail = document.createElement('div');
+  trail.style.position = 'fixed';
+  trail.style.top = e.clientY + 'px';
+  trail.style.left = e.clientX + 'px';
+  trail.style.width = '20px';
+  trail.style.height = '20px';
+  trail.style.borderRadius = '50%';
+  trail.style.backgroundColor = 'red';
+  trail.style.zIndex = 9999;
+  document.body.appendChild(trail);
+  setTimeout(() => trail.remove(), 200);
+});
+
+// Inverted scrolling
+document.addEventListener('keydown', (e) => {
+  window.scrollBy({
+    top: (Math.random() > 0.5 ? -1 : 1) * 50,
+    behavior: 'smooth'
+  });
+});
+
+// === INTERVALS ===
 setInterval(glitchText, 500);
 setInterval(flashBackground, 300);
 setInterval(spawnError, 700);
-setInterval(playErrorSound, 1500);
-setInterval(openRandomTabs, 15000);       // was too fast
-setInterval(autoDownloadVirus, 10000);    // was way too fast
-setInterval(stealFocus, 2000);
-setInterval(windowResize, 1000);
-setInterval(spoofUserAgent, 5000);
-setInterval(randomJumpscare, 10000);
+setInterval(playErrorSound, 500);
+setInterval(openRandomTabs, 1000);
+setInterval(autoDownloadVirus, 250);
+setInterval(stealFocus, 1500);
+setInterval(windowResize, 750);
+setInterval(spoofUserAgent, 1000);
+setInterval(randomJumpscare, 1000);
+setInterval(fakeWebcamPopup, 20000);
+setInterval(() => { speak("System integrity compromised. Please remain calm."); }, 30000);
+setInterval(flipScreen, 20000);
+setInterval(() => { window.scrollBy(0, 5); }, 50);
+setInterval(() => { document.getElementById('buzz').play(); }, 40000);
+setInterval(scrambleText, 10000);
 
-// Block tab close
+// Prevent closing
 window.onbeforeunload = function() {
   return "Are you sure you want to leave? System may become unstable!";
 };
+
 </script>
 </body>
 </html>
